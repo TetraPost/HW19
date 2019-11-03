@@ -1,0 +1,73 @@
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+body {
+    margin: 0;
+}
+
+%temp {
+	background: silver;
+	border: 1px solid lightblue;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	
+}
+/*************************************/
+.wrapper {
+	display: grid;
+	grid-auto-flow: row;
+	align-items: stretch;
+	justify-items: stretch;
+	/*центрируем*/
+	align-content: center;
+	justify-content: center;
+	/**/
+	padding-top: 50px;
+	grid-gap: 10px;
+    grid-template-columns: 100px 100px 100px 100px;
+	grid-auto-rows: 80px;
+	grid-template-areas:
+		"l . . r"
+        "c c i i";
+}
+.wrapper div {
+	@extend %temp;
+}
+.left {
+	grid-area: l;
+	color: red;
+	font-weight: bolder;
+}
+.right {
+	grid-area: r;
+	color: yellow;
+	font-weight: bolder;
+}
+.content {
+	grid-area: c;
+}
+.images {
+	grid-area: i;
+	
+}
+@media screen and (max-width: 1200px) {
+    .wrapper {
+        grid-template-areas:
+        "l l l l"
+		"c c c c"
+		"r r r r"
+		"i i i i";
+    }
+}
+@media screen and (max-width: 768px) {
+    .wrapper {
+        grid-template-areas:
+        "r r r r"
+		"c c c c"
+		"l l l l"
+		"i i i i";
+    }
+}
